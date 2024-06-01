@@ -1,4 +1,9 @@
+import { useState } from "react";
+
 const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
+  const [like, setLike] = useState(likes);
+  const [dislike, setDisLike] = useState(dislikes);
+
   return (
     <div className="joke">
       <div className="joke__body">
@@ -11,20 +16,20 @@ const Joke = ({ userAvatar, userName, text, likes, dislikes }) => {
       </div>
       <div className="joke__likes">
         <button
-          onClick={() => {likes}}
+          onClick={() => setLike(like + 1)}
           id="btn-up"
           className="btn-like btn-like--up"
         ></button>
         <span id="likes-up" className="likes-count likes-count--up">
-          {likes}
+          {like}
         </span>
         <button
-          onClick={() => {dislikes}}
+          onClick={() => setDisLike(dislike + 1)}
           id="btn-down"
           className="btn-like btn-like--down"
         ></button>
         <span id="likes-down" className="likes-count likes-count--down">
-          {dislikes}
+          {dislike}
         </span>
       </div>
     </div>
